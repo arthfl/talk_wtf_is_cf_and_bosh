@@ -1,0 +1,10 @@
+---
+applications:
+  - name: go-demo
+    memory: 128M
+    instances: 1
+    buildpacks:
+        - https://github.com/cloudfoundry/go-buildpack.git
+    env:
+      BP_DEBUG: true
+      GOPACKAGENAME: main

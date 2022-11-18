@@ -1,0 +1,28 @@
+---
+# This just deploys a defined number of empty VMs
+# Can be useful to debug basic BOSH things
+name: empty-vm
+  
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+  
+releases: []
+  
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 5000-60000
+  update_watch_time: 5000-60000
+  
+instance_groups:
+- name: emptyvm
+  azs: [eu-central-1a]
+  instances: 3
+  jobs: []
+  vm_type: t3.micro
+  stemcell: default
+  #  persistent_disk: 10240
+  networks:
+  - name: infrastructure
